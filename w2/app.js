@@ -18,14 +18,14 @@ const handleButtonClick = function() {
     // Increase clickCount by 1 each time the button is clicked
     totalCost += 15;
     // Template strings (literal) to easily combine our variables and text into one message
-    let message = `Current Total: ${totalCost}.`;
+    let message = `Current Total: $${totalCost}.`;
        
         // This is basic decision-making in JavaScript!
         // Use a simple 'if' statement to make our page react differently based on clickCount.
     if(totalCost >= 60) {
           // We can even change the style of an HTML element directly with JavaScript!
           // Change text color
-           message += 'Over Budget!';
+           message += '(Over Budget!)';
            messageDisplayElement.style.color = 'red';
     } else{
             messageDisplayElement.style.color = 'green';
