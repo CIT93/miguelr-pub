@@ -2,8 +2,8 @@ console. log('Hello from app.js! Your JavaScript is connected and running!');
 //--- Part 1: Select HTML Elements 
 // We use document.getElementById() to get a reference to an element by its unique ID.
 // We store these references in 'const' variables because the elements themselves won't change.
-const messageDisplayElement = document.getElementById("output-message");
-const updateButton = document.getElementById("update-button");
+const messageDisplayElement = document.getElementById("total-display");
+const updateButton = document.getElementById("add-item-btn");
 
 //These variables will change as the user interacts with the page.
 let userName = 'Miguel';
