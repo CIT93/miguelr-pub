@@ -1,6 +1,6 @@
 console. log('Hello from app.js! Your JavaScript is connected and running!');
 import * as orderHandler from './order-handler.js'; 
-
+import * as calculator from './price-calculator.js'; 
 const orderForm = document.getElementById('orderForm');
 
 const messageDisplayElement = document.getElementById ('ordersummary');
