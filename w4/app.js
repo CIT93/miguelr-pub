@@ -1,10 +1,11 @@
-console. log('Hello from app.js! Your JavaScript is connected and running!');
+console.log('Hello from app.js! Your JavaScript is connected and running!');
 import * as orderHandler from './order-handler.js'; 
 import * as calculator from './price-calculator.js'; 
 const orderForm = document.getElementById('orderForm');
 
 const messageDisplayElement = document.getElementById ('ordersummary');
 
+const orders = []
 
 
 const handleOrderSubmit = function(event){
@@ -16,10 +17,25 @@ const handleOrderSubmit = function(event){
         console.log(`key of giftwrap value of  ${formData.giftwrap}`);
         console.log(`key of size value of  ${formData.size}`);
         console.log(formData)
-        
-    messageDisplayElement.textContent = `Ordered ${formData.qty} ${formData.size} T-Shirts`; 
 
-}
+        const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap); 
+
+        
+        const newEntry = {
+            ...formData, 
+            total:calculatedPrice, 
+            timeStamp: new Date().toISOString(),
+           
+         }
+            orders.push(newEntry); 
+
+            console.log("Orders array:",orders); 
+
+            messageDisplayElement.textContent = `Ordered ${formData.qty} ${formData.size} T-Shirts. Total: $${calculatedPrice}`;
+    }; 
+    
+
+
 
 
 

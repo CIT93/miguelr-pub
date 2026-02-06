@@ -1,3 +1,5 @@
+
+
 const orderForm = document.getElementById('orderForm'); 
 
 const qtyInput = orderForm.querySelector('#qty');  
@@ -32,7 +34,9 @@ const getSelectedRadioValue = function(radioButtons){
         return{ 
             qty: parseInt(qtyInput.value) || 1, 
             size: getSelectedRadioValue(sizeRadio) || "S", 
-            giftwrap: giftwrapInput.checked
+            giftwrap: giftwrapInput.checked 
+        
+        
         }
 
 
