@@ -14,6 +14,6 @@ export const displayOrder = function(order){
     displayTotalInput.textContent = order.totalPrice
     displayQtyInput.textContent = order.qty
     displaySizeInput.textContent = order.size
-    if(order.gift){displayGiftInput.textContent = "yes"}
+    if(order.giftwrap){displayGiftInput.textContent = "yes"}
     else{displayGiftInput.textContent = "No"}; 
 }
