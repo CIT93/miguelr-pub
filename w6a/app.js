@@ -23,6 +23,7 @@ const handleOrderSubmit = function(event){
             ...formData, 
             totalPrice:calculatedPrice, 
             gift: formData.giftwrap, 
+            id: orderStorage.generateUniqueId(),
             timeStamp: new Date().toISOString(),
            
          }

@@ -9,6 +9,10 @@ export const saveOrders = function (orders) {
     }
 
 }
+    export const generateUniqueId = function(){
+        return Date.now().toString();
+
+    }
 
 export const loadOrders = function () {
     try {
