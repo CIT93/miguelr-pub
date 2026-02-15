@@ -22,11 +22,12 @@ const handleOrderSubmit = function(event){
         const newOrder = {
             ...formData, 
             totalPrice:calculatedPrice, 
-            giftwrap:formData.giftwrap, 
+            gift: formData.giftwrap, 
             timeStamp: new Date().toISOString(),
            
          }
             orders.push(newOrder); 
+            orderStorage.saveOrders(orders); 
 
            resultsDisplay.displayOrder(newOrder)
         
@@ -41,10 +42,10 @@ const init = function(){
     const orderForm = document.getElementById('orderForm');
     orderForm.addEventListener('submit',handleOrderSubmit);
 
-    const ordersLoaded = ordersStorage.ordersLoaded(); 
+    const ordersLoaded = orderStorage.loadOrders(); 
     if(ordersLoaded.length > 0 ) {
 
-        order.push(...ordersLoaded); 
+        orders.push(...ordersLoaded); 
         console.log('Orders loaded:')
 
     }else {
