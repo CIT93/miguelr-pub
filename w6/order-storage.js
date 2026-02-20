@@ -1,5 +1,4 @@
 const LOCAL_STORAGE_KEY = 'orders';
-
 export const saveOrders = function (orders) {
     try {
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(orders));
