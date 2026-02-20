@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js" defer></script>
+    <title>Order History Table</title>
+</head>
+<body>
+    <h1>Custom T-Shirt Order</h1>
+    
+    <form id="orderForm">
+        
+        <label>Quantity ($15 each): 
+            <input type="number" id="qty" value="1" min="1">
+        </label>
+        <br><br>
+
+        <label>Size:</label>
+        <label><input type="radio" name="size" value="Small" checked> S</label>
+        <label><input type="radio" name="size" value="Medium"> M</label>
+        <label><input type="radio" name="size" value="Large"> L</label>
+        <br><br>
+
+        <label>
+            <input type="checkbox" id="giftwrap"> Add Gift Wrap?
+        </label>
+        <br><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <hr>
+    
+    <div id="orderSummary" style="display: 'block';">
+        <h2>Order Success!</h2>
+        <p><strong>Total Cost:</strong> $<span id="displayTotal"></span></p>
+        <p><strong>Details:</strong> <span id="displayQty"></span> <span id="displaySize"></span> T-Shirt(s)</p>
+        <p><strong>Gift Wrap:</strong> <span id="displayGift"></span></p>
+    </div>
+<div id="orderHistorySection">
+    <h2>Order History</h2>
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Qty</th>
+                <th>Size</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="orderTableBody">
+        </tbody>
+    </table>
+</div>
+</body> 
