@@ -83,8 +83,8 @@ const handleFormSubmit = function(event) {
         ...calculatedResults, 
         id: storage.generateUniqueId(),
         timestamp: new Date().toISOString()
-    
-        
+    }; 
+
     carbonFootprintEntries.push(newEntry);
     // Log the full array!
     console.log(carbonFootprintEntries);
@@ -173,32 +173,24 @@ const handleEditEntry = function(id){
 // This function sets up all the event listeners.
 // The 'DOMContentLoaded' event is crucial!
 const init = function(){
-    console. log('App initialized: DOM is ready! Try submitting the form or clearing it.');
-    
-    // Attach the 'submit' event listener to our main form.
-    // When the form is submitted, the 'handleFormSubmit' function will be called.
+    console.log('App initialized: DOM is ready!');
+
     carbonFootprintForm.addEventListener('submit', handleFormSubmit);
-    // Attach the 'click' event listener to our "Clear Form" button.
-    // When the button is clicked, the 'handleClearForm' function will be called.
-    clearFormButton.addEventListener('click', handleClearForm); 
+    clearFormButton.addEventListener('click', handleClearForm);
+
     resultsDisplay.hideResults(); 
-    // On startup, attempt to load any previously saved entries from localStorage.
-    const loadEntries = storage.loadEntries(); 
-    if(loadEntries.length > 0) {
-    // If no data is found in localStorage, return an empty array.
-    // carbonFootprintEntries array using the spread operator (...).
-    carbonFootprintEntries.push(...loadEntries); 
-    console.log('Entries loaded from localStorage')
-    } else {
-        console.log('No entries found in localStorage Starting fresh ')
+
+    const loadedEntries = storage.loadEntry(); 
+
+    if(loadedEntries.length > 0) {
+        carbonFootprintEntries.push(...loadedEntries); 
     }
 
-    //handleDeleteEntry("1772168679051"); 
-
     tableRenderer.renderTable(carbonFootprintEntries,  {
-            onDelete: handleDeleteEntry, 
-            onEdit: handleEditEntry
-        }); 
+        onDelete: handleDeleteEntry, 
+        onEdit: handleEditEntry
+    }); 
+};
     // init function - Event listener for "Clear All Data"
     clearAllDataButton.addEventListener('click', function (event) {
         event.stopPropagation(); // Prevents this click from potentially triggering other global click listeners.
