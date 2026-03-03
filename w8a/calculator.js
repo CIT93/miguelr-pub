@@ -51,11 +51,11 @@ const calculateFoodDietPoints = function(dietType){
 const calculateFoodPackagingPoints = function(foodPackaging) {
     switch(foodPackaging){
         case 'prepackaged': return 12;
-        case 'balence': return 6;    // <-- logic bug here
+        case 'balanced': return 6 ;    // <-- logic bug here
         case 'fresh': return 2; 
         default: return 0; 
     }
-}
+};
 
 // This module contains the core logic for calculating carbon footprint points.
 // Calculate points for each category using our dedicated helper functions
