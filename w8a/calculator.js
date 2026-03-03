@@ -51,7 +51,7 @@ const calculateFoodDietPoints = function(dietType){
 const calculateFoodPackagingPoints = function(foodPackaging) {
     switch(foodPackaging){
         case 'prepackaged': return 12;
-        case 'balence': return 6
+        case 'balence': return 6;    // <-- logic bug here
         case 'fresh': return 2; 
         default: return 0; 
     }

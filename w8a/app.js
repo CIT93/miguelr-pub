@@ -180,7 +180,7 @@ const init = function(){
 
     resultsDisplay.hideResults(); 
 
-    const loadedEntries = storage.loadEntry(); 
+    const loadedEntries = storage.loadEntries(); 
 
     if(loadedEntries.length > 0) {
         carbonFootprintEntries.push(...loadedEntries); 
@@ -190,7 +190,7 @@ const init = function(){
         onDelete: handleDeleteEntry, 
         onEdit: handleEditEntry
     }); 
-};
+
     // init function - Event listener for "Clear All Data"
     clearAllDataButton.addEventListener('click', function (event) {
         event.stopPropagation(); // Prevents this click from potentially triggering other global click listeners.
