@@ -73,22 +73,18 @@ const resetAllUIStates = function(){
 // Handles the Form submission event.
 // @param {Event} event - The event object provided by the browser.
 const handleFormSubmit = function(event) {
-    // IMPORTANT: event.preventDefault()
-    // This stops the browser's default behavior of reloading the page when a form is submitted.
     event.preventDefault();
-   // console. log(event);
+
     const formData = formHandler.getFormInputs();
-    //console.log(formData)
     const calculatedResults = calculator.calculateFootprint(formData)
-   
-    // Combine the input data with the calculated results into a single entry object.
-const newEntry = { 
-    ...formData,
-    ...calculatedResults, 
-    id: storage.generateUniqueId(),
-    timestamp: new Date().toISOString()
-}
-    // Add the new entry to our 'carbonFootprintEntries' array.
+
+    const newEntry = { 
+        ...formData,
+        ...calculatedResults, 
+        id: storage.generateUniqueId(),
+        timestamp: new Date().toISOString()
+    
+        
     carbonFootprintEntries.push(newEntry);
     // Log the full array!
     console.log(carbonFootprintEntries);
