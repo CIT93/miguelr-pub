@@ -17,15 +17,15 @@ const handleOrderSubmit = function(event){
     
        
 
-       // const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap); 
+        const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap); 
 
         
              // app.js - inside handleOrderSubmit
         const newOrder = {
          id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
-         qty: qty,
-            size: size,
-            totalPrice: totalPrice,
+         qty: formData.qty,
+            size: formData.size,
+            totalPrice: calculatedPrice,
             // ... any other properties
         };
             orders.push(newOrder); 

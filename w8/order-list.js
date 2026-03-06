@@ -47,7 +47,14 @@ export const renderOrders = function(orders){
         <td>${formatDateDisplay(entry.timeStamp)}</td> 
         <td>${formatQtyDisplay(entry.qty)}</td> 
         <td>${formatRadioValue(entry.size)}</td> 
-        <td>${entry.totalPrice.toFixed(2)}</td>`; 
+        <td>${entry.totalPrice.toFixed(2)}</td>
+        <td>
+            <button class= "action-button edit" data-id="${orders.id}">Edit</button>
+            <button class= "action-button delete" data-id="${orders.id}">Delete</button> 
+            </td>
+            `; 
+        
+
 
         orderTableBody.appendChild(row) 
 
@@ -55,4 +62,5 @@ export const renderOrders = function(orders){
         
     });
 
-}
+ }
+
