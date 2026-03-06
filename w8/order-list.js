@@ -4,6 +4,8 @@ const orderTable = document.getElementById('orderTable');
 
 const orderTableBody = orderTable.querySelector('tbody')
 
+let moduleCallbacks = {}; 
+
 const formatDateDisplay = function(timeStamp){
     const date = new Date(timeStamp); 
     return date.toLocaleDateString('en-US', {
@@ -29,23 +31,34 @@ const formatRadioValue = function(size, giftwrap){
 
 const tableBody = document.getElementById('order-table-body');
 
-orderTableBody.addEventListener('click', function(event) {
+orderTableBody.addEventListener('click', function (event) {
     const target = event.target;
-    
-    // 1. Get the ID from the button that was clicked
+
+
     const id = target.dataset.id;
 
-    // 2. Guard Clause: If they clicked a row (white space) but NOT a button, 
-    // there will be no ID. So we stop the function immediately.
     if (!id) return;
 
-    // 3. Temporary Test: Log the ID to prove it works!
-    console.log("Clicked button with ID:", id); 
+    if(target.classList.contains('editbtn')){
+        if(moduleCallbacks.onEdit){
+            moduleCallbacks.onEdit(id)
+        }
+    }
+
+     if(target.classList.contains('deletebtn')){
+        if (moduleCallbacks.onDelete) {
+            moduleCallbacks.onDelete(id)
+        }
+    }
+
+    //console.log("Clicked button with ID:", id); 
 });
 
 
-export const renderOrders = function(orders){
+export const renderOrders = function(orders, callbacks){
     orderTableBody.innerHTML = ''
+
+    moduleCallbacks = callbacks
 
     if(orders.length === 0){
         orderHistorySection.style.display ='none'
@@ -66,8 +79,8 @@ export const renderOrders = function(orders){
         <td>${formatRadioValue(entry.size)}</td> 
         <td>${entry.totalPrice.toFixed(2)}</td>
         <td>
-            <button class= "edit-btn" data-id="${entry.id}">Edit</button>
-            <button class= "delete-btn" data-id="${entry.id}">Delete</button> 
+            <button class= "editbtn" data-id="${entry.id}">Edit</button>
+            <button class= "deletebtn" data-id="${entry.id}">Delete</button> 
             </td>
             `; 
         
