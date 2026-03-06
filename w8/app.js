@@ -17,22 +17,23 @@ const handleOrderSubmit = function(event){
     
        
 
-        const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap); 
+       // const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap); 
 
         
+             // app.js - inside handleOrderSubmit
         const newOrder = {
-            ...formData, 
-            totalPrice:calculatedPrice, 
-            gift: formData.giftwrap, 
-            id: orderStorage.generateUniqueId(),
-            timeStamp: new Date().toISOString(),
-           
-         }
+         id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
+         qty: qty,
+            size: size,
+            totalPrice: totalPrice,
+            // ... any other properties
+        };
             orders.push(newOrder); 
             orderStorage.saveOrders(orders); 
             orderList.renderOrders(orders)
 
            resultsDisplay.displayOrder(newOrder)
+           
         
     }; 
     
