@@ -4,6 +4,7 @@ import * as calculator from './price-calculator.js';
 import * as resultsDisplay from './results-display.js';
 import * as orderStorage from './order-storage.js';
 import * as orderList from './order-list.js';
+
 const orderForm = document.getElementById('orderForm');
 
 const messageDisplayElement = document.getElementById('ordersummary');
@@ -46,6 +47,17 @@ const handleOrderSubmit = function (event) {
 
 const handleDelete = function(id) {
     console.log("App.js: Requesting delete for order", id);
+    const indexToDelete = orders.findIndex(function(entry){
+        return entry.id === id; 
+    }); 
+    if(indexToDelete !== -1){
+        orders.splice(indexToDelete, 1); 
+        orderStorage.saveOrders(orders); 
+        orderList.renderOrders(orders, {
+            onDelete: handleDelete,
+            onEdit: handleEdit
+        }); 
+    }; 
 };
 
 const handleEdit = function(id) {

@@ -39,7 +39,7 @@ orderTableBody.addEventListener('click', function (event) {
 
     if (!id) return;
 
-    if(target.classist.contains('editbtn')){
+    if(target.classList.contains('editbtn')){
         if(moduleCallbacks.onEdit){
             moduleCallbacks.onEdit(id)
         }
