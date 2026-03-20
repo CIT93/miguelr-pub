@@ -62,7 +62,27 @@ const handleDelete = function(id) {
 
 const handleEdit = function(id) {
     console.log("App.js: Requesting edit for order", id);
-};
+   const order = orders.find(function(entry){
+        return entry.id === id;
+    });
+    
+        if (!order) return; 
+        document.getElementById('qty').value = order.qty;
+
+        const sizeRadio = document.querySelector(
+        `input[name="size"][value="${order.size}"]`);
+        
+        if(sizeRadio){
+            sizeRadio.checked = true; 
+        }
+
+        document.getElementById('giftwrap').checked = order.giftwrap; 
+        document.getElementById('order-id').value = order.id ; 
+
+        window.scrollTo({top: 0, behavior:'smooth'}); 
+
+    
+    }; 
 
 
 
