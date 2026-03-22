@@ -20,69 +20,82 @@ const handleOrderSubmit = function (event) {
 
     const calculatedPrice = calculator.calculateTotal(formData.qty, formData.giftwrap);
 
-
+    const orderId = document.getElementById('order-id').value;
     // app.js - inside handleOrderSubmit
-    const newOrder = {
-        id: Date.now().toString(), // <--- ADD THIS LINE (Unique ID based on time)
-        qty: formData.qty,
-        size: formData.size,
-        totalPrice: calculatedPrice,
-        // ... any other properties
-    };
-    orders.push(newOrder);
-    orderStorage.saveOrders(orders);
-    
+
+    if (orderId) {
+        const index = orders.findIndex(order => order.id === orderId);
+
+        if (index !== -1) {
+            orders[index] = {
+                ...orders[index],
+                ...formData,
+                totalPrice: calculatedPrice
+            };
+        }
+
+
+    }else{
+        const newOrder = {
+            id: Date.now().toString(),
+            ...formData, 
+            totalPrice: calculatedPrice, 
+            timeStamp: new Date().toDateString()
+        }; 
+        orders.push(newOrder)
+    }
+    orderStorage.saveOrders(orders); 
     orderList.renderOrders(orders, {
-            onDelete: handleDelete,
-            onEdit: handleEdit
-        });
+        onDelete: handleDelete, 
+        onEdit: handleEdit
+    }); 
 
-    resultsDisplay.displayOrder(newOrder)
+   document.getElementById('order-id').value= ''; 
+   orderForm.reset(); 
+}; 
 
-
-};
 
 
 // app.js
 
-const handleDelete = function(id) {
+const handleDelete = function (id) {
     console.log("App.js: Requesting delete for order", id);
-    const indexToDelete = orders.findIndex(function(entry){
-        return entry.id === id; 
-    }); 
-    if(indexToDelete !== -1){
-        orders.splice(indexToDelete, 1); 
-        orderStorage.saveOrders(orders); 
+    const indexToDelete = orders.findIndex(function (entry) {
+        return entry.id === id;
+    });
+    if (indexToDelete !== -1) {
+        orders.splice(indexToDelete, 1);
+        orderStorage.saveOrders(orders);
         orderList.renderOrders(orders, {
             onDelete: handleDelete,
             onEdit: handleEdit
-        }); 
-    }; 
+        });
+    };
 };
 
-const handleEdit = function(id) {
+const handleEdit = function (id) {
     console.log("App.js: Requesting edit for order", id);
-   const order = orders.find(function(entry){
+    const order = orders.find(function (entry) {
         return entry.id === id;
     });
-    
-        if (!order) return; 
-        document.getElementById('qty').value = order.qty;
 
-        const sizeRadio = document.querySelector(
+    if (!order) return;
+    document.getElementById('qty').value = order.qty;
+
+    const sizeRadio = document.querySelector(
         `input[name="size"][value="${order.size}"]`);
-        
-        if(sizeRadio){
-            sizeRadio.checked = true; 
-        }
 
-        document.getElementById('giftwrap').checked = order.giftwrap; 
-        document.getElementById('order-id').value = order.id ; 
+    if (sizeRadio) {
+        sizeRadio.checked = true;
+    }
 
-        window.scrollTo({top: 0, behavior:'smooth'}); 
+    document.getElementById('giftwrap').checked = order.giftwrap;
+    document.getElementById('order-id').value = order.id;
 
-    
-    }; 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+
+};
 
 
 
