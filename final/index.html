@@ -1,0 +1,138 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Skateboarding Selector</title>
+        <!-- updating script tag to add type=module -->
+        <script type="module" src="app.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+        </head>
+    <body>
+        <main class="container">
+            <h1>Skate Session Selector</h1>
+            <p> Make your decision by selecting inputs to give you a Skateboarding plan </p>
+
+            <form id="skateboardingSelectionForm" novalidate>
+                <input type="hidden" id="id" name="id"> 
+                <fieldset>
+                    <legend>Skate Type</legend>
+                    <div class="form-group">
+                        <label for="skateType">Type:</label>
+                        <select id="skateType" name="skateType">
+                                <option value="">-- Select a type--</option>
+                                <option value="rails">Rails</option>
+                                <option value="stairs">Stairs</option>
+                                <option value="ledges">Ledges</option>
+                                <option value="flatground">Flatground</option>
+                                <option value="transition">Transition</option>
+                        </select>
+                         <div class = "error-message" id="skateTypeError" ></div>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Skate session length</legend>
+                    <div class="form-group">
+                        <label for="skateSession">Session Length (Time Skating):</label>
+                        <input type="number" id="skateSession" name="skateSession" value="0" placeholder="e.g., 120">
+                        <p class="note"><em>(Long &gt;242 min,  Average 120 min, Short &lt; 60 min,)</em></p>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="skateSwitch" name="skateSwitch">
+                        <label for="skateSwitch">Check if you want to skate switch</label>
+                    </div>
+                    <div class = "error-message" id="skateSessionError" ></div>
+                </fieldset>
+
+             <fieldset>
+                <legend>Mood Selector</legend>
+                <div class="form-group">
+                    <p class="radio-group-heading">Your Mood Type:</p>
+                    <div class="radio-group">
+                        <label for="happy">
+                            <input type="radio" id="happy" name="moodType" value="happy" checked>
+                            Happy
+                        </label>
+                        <label for="sad">
+                            <input type="radio" id="sad" name="moodType" value="sad">
+                            Sad
+                        </label>
+                        <label for="relaxed">
+                            <input type="radio" id="relaxed" name="moodType" value="relaxed">
+                            Relaxed 
+                        </label>
+                        <label for="tense">
+                            <input type="radio" id="tense" name="moodType" value="tense">
+                           Tense 
+                        </label>
+                    </div>
+                    <div class = "error-message" id="moodTypeError" ></div>
+                </div>
+             <fieldset>
+                
+                    <legend>Skate Weather Type</legend>
+                    <div class="form-group">
+                        <label for="skateWeather">Type:</label>
+                        <select id="skateWeather" name="skateWeather">
+                                <option value="">-- Select a type--</option>
+                                <option value="raining">Raining</option>
+                                <option value="sunny">Sunny</option>
+                                <option value="windy">Windy</option>
+                                <option value="schorching">Schorching</option>
+                                <option value="freezing">Freezing</option>
+
+
+
+                        </select>
+
+                    </div>
+                    <div class = "error-message" id="skateWeatherError" ></div>
+            </fieldset>
+                
+            </fieldset>
+
+                <button type="submit" id="submitButton">Select Skate Session</button>
+                <button type="button" id="clearFormButton" class="secondary-button">Clear Form</button>
+            </form>
+
+            <section id="results" class="results-container" style="display: none;">
+                <h2>Session Selected</h2>
+                <p id="sessionSelected" class="highlight-total">Go Skate!</p>
+                <div id="breakdown">
+                    <h3>Breakdown:</h3>
+                    <ul>
+                        <li id="skatetypeSelected">Skate Type:</li>
+                        <li id="sessionlengthSelected">Skate Session Length:</li>
+                        <li id="moodTypeSelected">Mood Type:</li>
+                        <li id="skateWeatherSelected">Skate Weather:</li>
+                        
+                       
+                    </ul>
+                </div>
+                <p class="note"><em> Session Results</em></p>
+            </section>
+            <section class="table-container">
+    <h2>Your Skate entries</h2>
+    <table id="history" style="display: none;">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Skate Type</th>
+                <th>Skate Session</th>
+                <th>Mood Type</th>
+                <th>Skate Weather</th>
+                <th>Actions</th> <!-- For Edit/Delete buttons (will be added later) -->
+            </tr>
+        </thead>
+        <tbody id="history-list">
+        
+        </tbody>
+    </table>
+    <p id="noEntriesMessage" class="note" style="display: block;">No entries.</p>
+    </section>
+            </main>
+
+    </body>
+    </html> 
