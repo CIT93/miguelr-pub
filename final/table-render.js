@@ -74,3 +74,4 @@ export const renderedTable = (data, callbacks) => {
 }; 
     document.querySelector('#history-list').addEventListener('click', handleTableClick);
 
+    

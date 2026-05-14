@@ -25,4 +25,5 @@ export const getFromLS = () => {
         localStorage.removeItem(SKATE_BOARD_KEY); 
         
     }
+    
 };

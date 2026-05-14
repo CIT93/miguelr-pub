@@ -118,3 +118,4 @@ export const generateSkateSessionPlan = (formData) => {
         skateWeatherRecommendation: weatherResult
     };
 };
+

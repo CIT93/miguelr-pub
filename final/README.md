@@ -20,3 +20,4 @@
 ### for sessionlenth error message: "Session submission must be more then 15min and less then 480 min" skate type :"Skate Type not selected "
 ### mood type : "Mood Type not selected" skate weather: "Weather not selected" 
 
+

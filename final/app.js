@@ -213,4 +213,5 @@ const init = () => {
     resetAllUIStates();
 };
 
+
 document.addEventListener('DOMContentLoaded', init); 
